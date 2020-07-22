@@ -6,10 +6,12 @@ public class _enemyBehavior : MonoBehaviour
 {
     public _enemyAttributes enemyAttributes;
     public _playerBehavior playerBehavior;
+ 
     void Start()
     {
         enemyAttributes = GetComponent<_enemyAttributes>();
         playerBehavior = GameObject.FindGameObjectWithTag("Player").GetComponent<_playerBehavior>();
+     
 
     }
    
@@ -19,7 +21,7 @@ public class _enemyBehavior : MonoBehaviour
         
         if (collision.gameObject.tag == "Bullet")
         {
-            playerBehavior.enemyHasBeenShot(collision);
+            playerBehavior.enemyHasBeenShot(collision, this.gameObject);
         }
 
     }
@@ -36,6 +38,7 @@ public class _enemyBehavior : MonoBehaviour
     void EnemyDying()
     {
         GameObject.Destroy(this.gameObject);
+      
     }
     int randDamage()
     {

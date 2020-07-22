@@ -10,13 +10,14 @@ public class _enemyMovement : MonoBehaviour
     public Rigidbody2D _rigidbody;
    public _enemyAttributes enemyAttributes;
     public GameObject player;
+   
     // Start is called before the first frame update
     void Start()
     {
         //playerAttributes = GetComponent<_playerAttributes>();
         enemyAttributes = GetComponent<_enemyAttributes>();
         _rigidbody = GetComponent<Rigidbody2D>();
-       player =  GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame

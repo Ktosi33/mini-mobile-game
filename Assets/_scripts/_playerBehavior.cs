@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class _playerBehavior : MonoBehaviour
 {
-   public _playerAttributes playerAttributes;
+    _playerAttributes playerAttributes;
     _playerMovement playerMovement;
     public GameObject player;
     public GameObject shootPrefab;
-    public _enemyBehavior enemyBehavior;
     public float speedShooting =5f;
     void Start()
     {
@@ -26,14 +25,10 @@ public class _playerBehavior : MonoBehaviour
         }
      
     }
-    public void enemyHasBeenShot(Collider2D bulletCol)
+    public void enemyHasBeenShot(Collider2D bulletCol, GameObject enemy)
     {
-
-        enemyBehavior.ApplyDamage(randDamage());
-
+        enemy.GetComponent<_enemyBehavior>().ApplyDamage(randDamage());
         Destroy(bulletCol.gameObject);
-
-        
     }
     
     int randDamage()
@@ -46,7 +41,6 @@ public class _playerBehavior : MonoBehaviour
         GameObject newShoot = Instantiate(shootPrefab, transform.position, transform.rotation) as GameObject;
         
         Rigidbody2D newShootRB = newShoot.GetComponent<Rigidbody2D>();
-
         // newShootRB.AddForce(Vector2.right * speedShooting);
         //Vector3 direction = new Vector3(0,player.transform.eulerAngles.y, player.transform.eulerAngles.z);
         //direction = direction.normalized;
@@ -107,9 +101,5 @@ public class _playerBehavior : MonoBehaviour
                     break;
                 }
         }
-
-
-
-
     }
 }

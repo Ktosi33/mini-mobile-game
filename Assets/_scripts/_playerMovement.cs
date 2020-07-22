@@ -27,19 +27,16 @@ public class _playerMovement : MonoBehaviour
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-      
     }
 
     void Update()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
-        vertical = Input.GetAxisRaw("Vertical");
-        
+        vertical = Input.GetAxisRaw("Vertical");   
     }
 
     private void FixedUpdate() //it have to be in fixedupdate
     {
-      
         move = new Vector2(horizontal, vertical);
         move = move.normalized;
         if (move.x > 0)
@@ -88,13 +85,7 @@ public class _playerMovement : MonoBehaviour
                     _direction = playerDirection.leftDown;
                 }
             }
-
-
-
         }
-
-
         _rigidbody.velocity = Time.deltaTime * move * runSpeed;
-
     }
 }

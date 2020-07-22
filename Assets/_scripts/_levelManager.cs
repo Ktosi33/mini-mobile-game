@@ -20,7 +20,7 @@ public class _levelManager : MonoBehaviour
     List<GameObject> enemies;
     bool isStartingWave = true;
     bool isEndingWave = false;
-
+   
     void Start()
     {
         enemies = new List<GameObject>();
@@ -53,10 +53,11 @@ public class _levelManager : MonoBehaviour
         SpawningEnemy();
 
     }
+ 
     void SpawningEnemy()
     {
         countToSpawn = waveAmountOfEnemy;
-
+        
         while (countToSpawn != 0)
         {
             Vector3 spawnPosition;
@@ -67,7 +68,9 @@ public class _levelManager : MonoBehaviour
             Instantiate(enemy, spawnPosition, Quaternion.identity);
 
             countToSpawn--;
+           
         }
+     
     }
     void calculationEnemyWaveForce()
     {
