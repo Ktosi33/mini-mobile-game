@@ -863,7 +863,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17d5c5c2feb660a418641997a0a49f53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wallPrefab: {fileID: 0}
+  wallPrefab: {fileID: 741916045667213459, guid: bc1dbc57f5eb7ae4ea622bc9f2fc69a2,
+    type: 3}
   _plMovement: {fileID: 2065374735}
   distance: 2
 --- !u!114 &2065374740
