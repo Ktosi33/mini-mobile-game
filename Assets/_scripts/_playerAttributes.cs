@@ -8,7 +8,6 @@ public class _playerAttributes : MonoBehaviour
     public int minDamage;
     public int maxDamage;
     public int regenerationHP;
-   
+    public float shootCooldown;
 
-   
 }

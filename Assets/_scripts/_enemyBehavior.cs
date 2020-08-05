@@ -32,6 +32,7 @@ public class _enemyBehavior : MonoBehaviour
 
         if (enemyAttributes.hp < 0)
         {
+            GameObject.FindGameObjectWithTag("LevelManager").GetComponent<_levelManager>().checkHowManyAliveEnemies();
             EnemyDying();
         }
     }  

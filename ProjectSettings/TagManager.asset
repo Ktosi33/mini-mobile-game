@@ -8,6 +8,7 @@ TagManager:
   - Building
   - Bullet
   - LevelManager
+  - GridBlock
   layers:
   - Default
   - TransparentFX
