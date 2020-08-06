@@ -39,7 +39,7 @@ public class _playerBehavior : MonoBehaviour
     }
     void Shoot()
     {
-        Debug.Log(playerAttributes.shootCooldown);
+      //  Debug.Log(playerAttributes.shootCooldown);
         cooldown.wait(playerAttributes.shootCooldown);
 
         GameObject newShoot = Instantiate(shootPrefab, transform.position, transform.rotation) as GameObject;
@@ -49,6 +49,7 @@ public class _playerBehavior : MonoBehaviour
             //Vector3 direction = new Vector3(0,player.transform.eulerAngles.y, player.transform.eulerAngles.z);
             //direction = direction.normalized;
             //newShootRB.AddForce(direction * speedShooting);
+
             switch (playerMovement._direction) // idk why i didnt use just player rotation
             {
                 case _playerMovement.playerDirection.right:
