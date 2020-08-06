@@ -71,7 +71,7 @@ public class ShopItem : MonoBehaviour
         }
     }
 
-    public bool Buy() {
+    internal bool Buy() {
         if(!IsUnlocked || IsLimited && Stock < 1) {
             return false;
         }
