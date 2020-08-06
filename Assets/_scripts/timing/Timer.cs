@@ -7,7 +7,7 @@ public class Timer
     private float counter;
     private float initialCounter;
     private float timeScale = 1f;
-    
+
     private bool isRepeatable;
 
     internal Timer(TimerManager _TimerManager, float time, bool _isRepeatable)
@@ -20,7 +20,7 @@ public class Timer
         }
         else
         {
-            Debug.Log("wrong inital time in timer");
+            Debug.Log("wrong inital time ctor: " + time);
             initialCounter = 0;
         }
 
@@ -38,10 +38,12 @@ public class Timer
     }
     public void Run()
     {
-        if(counter > 0) {
+        if (counter > 0)
+        {
             TimerManager.ActivateTimer(this);
         }
-        else {
+        else
+        {
             Debug.Log("Trying to activate timer with <= 0 time");
         }
     }
@@ -62,10 +64,11 @@ public class Timer
         }
         else
         {
-            Debug.Log("Invalid timer update");
+            Debug.Log("Invalid timer update: " + timeElapsed);
         }
 
-        if(counter <= 0) {
+        if (counter <= 0)
+        {
             OnElapsed();
         }
     }
@@ -78,8 +81,19 @@ public class Timer
         }
     }
 
-    public float GetTime() {
+    public float GetTime()
+    {
         return counter;
+    }
+
+    public void SetResetTime(float time)
+    {
+        if(time > 0) {
+            initialCounter = time;
+        }
+        else {
+            Debug.Log("Wrong initial time:" + initialCounter);
+        } 
     }
 
     public event Action OnElapsed;
