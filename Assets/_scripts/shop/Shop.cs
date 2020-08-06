@@ -1,18 +1,22 @@
-﻿using System;
+﻿using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Shop : MonoBehaviour
 {
     [SerializeField]
     private bool logging = false;
-    private IItemDatabase itemDatabase = new DummyItemList();
+    public IItemDatabase itemDatabase;
     private List<ShopItem> items;
 
     private void Start()
     {
+        itemDatabase = GetComponent<DummyItemList>();
         LoadItems();
+        CheckForUnlocks();
+        OnItemsChanged();
     }
 
     private void LoadItems()
@@ -20,6 +24,7 @@ public class Shop : MonoBehaviour
         items = itemDatabase.GetItems();
         foreach (ShopItem item in items)
         {
+            if(logging)
             Debug.Log("Loaded item: " + item.ItemName);
         }
     }
@@ -46,7 +51,8 @@ public class Shop : MonoBehaviour
             if (item.Buy())
             {
                 buyer.PayOut(item.Cost);
-                items.Remove(item);
+                OnItemsChanged();
+                Debug.Log($"item {item.ItemName} bought");
                 return true;
             }
             else if (logging){
@@ -66,4 +72,13 @@ public class Shop : MonoBehaviour
         }
     }
 
+    public List<ShopItem> GetAllItems() {
+        return items;
+    }
+
+    public List<ShopItem> GetAvailableItems() {
+        return items.Where(x => x.Stock != 0).ToList<ShopItem>();
+    }
+
+    public event Action OnItemsChanged;
 }

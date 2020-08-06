@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DummyBuyer : IBuyer
+public class DummyBuyer : MonoBehaviour , IBuyer
 {
-    private float money;
+    private float money = 500;
     public float CheckBalance()
     {
         return money;

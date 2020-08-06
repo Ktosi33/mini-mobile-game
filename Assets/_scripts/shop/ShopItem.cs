@@ -3,37 +3,41 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShopItem : MonoBehaviour
+public class ShopItem
 {
-    public ShopItem(Sprite _Icon, string _ItemName, string _Tooltip, float _Cost)
+    public ShopItem(Sprite _Icon, string _ItemName, string _Tooltip, float _Cost , Action _OnBought)
     {
         Icon = _Icon;
         ItemName = _ItemName;
+        Tooltip = _Tooltip;
         Cost = _Cost;
         IsLimited = false;
         unlockPredicate = new AlwaysUnlocked();
+        OnBought += _OnBought;
     }
 
     public ShopItem(Sprite _Icon, string _ItemName, string _Tooltip, float _Cost,
-                    IShopUnlockPredicate _unlockPredicate)
+                    IShopUnlockPredicate _unlockPredicate, Action _OnBought)
     {
         Icon = _Icon;
         ItemName = _ItemName;
+        Tooltip = _Tooltip;
         Cost = _Cost;
         IsLimited = false;
         unlockPredicate = _unlockPredicate;
+        OnBought += _OnBought;
     }
 
-    public ShopItem(Sprite _Icon, string _ItemName, string _Tooltip, float _Cost, int _Stock) :
-               this( _Icon, _ItemName, _Tooltip, _Cost)
+    public ShopItem(Sprite _Icon, string _ItemName, string _Tooltip, float _Cost, int _Stock, Action _OnBought) :
+               this( _Icon, _ItemName, _Tooltip, _Cost, _OnBought)
     {
         IsLimited = true;
         Stock = _Stock;
     }
 
     public ShopItem(Sprite _Icon, string _ItemName, string _Tooltip, float _Cost,
-                    int _Stock, IShopUnlockPredicate _unlockPredicate) :
-               this( _Icon, _ItemName, _Tooltip, _Cost, _unlockPredicate)
+                    int _Stock, IShopUnlockPredicate _unlockPredicate, Action _OnBought) :
+               this( _Icon, _ItemName, _Tooltip, _Cost, _unlockPredicate, _OnBought)
     {
         IsLimited = true;
         Stock = _Stock;
@@ -77,7 +81,9 @@ public class ShopItem : MonoBehaviour
         }
         else
         {
-            Stock -= 1;
+            if(IsLimited) {
+                Stock -= 1;
+            }
             OnBought();
             return true;
         }
