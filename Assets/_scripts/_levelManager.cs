@@ -56,9 +56,11 @@ public class _levelManager : MonoBehaviour
     }
     void startWave()
     {
-        //calc force
+    
         calculationEnemyWaveForce();
+
         SpawningEnemy();
+
         checkHowManyAliveEnemies();
     }
  
