@@ -11,12 +11,12 @@ public class DummyItemList : MonoBehaviour, IItemDatabase
         for(int i = 0; i < 3; i++)
         {
             items.Add(new ShopItem(sprites[i] , $"item{i}", $"this is item number {i}", i * 30,
-                                   () => Debug.Log($"item{i} OnBought() raised")));
+                                   () => Debug.Log("item" + i + " OnBought() raised"));
         }
         for(int i = 3; i < 5; i++)
         {
             items.Add(new ShopItem(sprites[i] , $"item{i}", $"this is item number {i}", i * 5, 2 * i,
-                      () => Debug.Log($"item{i} OnBought() raised")));
+                      () => Debug.Log("item" + i + " OnBought() raised")));
         }
         return items;
     }
