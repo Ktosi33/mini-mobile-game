@@ -31,6 +31,8 @@ public class _grid : MonoBehaviour
                 startPoint.x += width;
             }
             startPoint.x = startPointX;
+
+
             startPoint.y += height;
 
 
