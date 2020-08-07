@@ -19,7 +19,7 @@ public class ShopUI : MonoBehaviour
     private void updateMoney() {
          moneyText.text = $"GOLD: {buyer.CheckBalance().ToString()}";
     }
-    private void Start()
+    private void Awake()
     {
         updateMoney();
         buyButton.onClick.AddListener(() => {shop.BuyItem(currentItem, buyer);

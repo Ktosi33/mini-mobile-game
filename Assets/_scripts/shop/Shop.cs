@@ -52,6 +52,7 @@ public class Shop : MonoBehaviour
             {
                 buyer.PayOut(item.Cost);
                 OnItemsChanged();
+                if(logging)
                 Debug.Log($"item {item.ItemName} bought");
                 return true;
             }
