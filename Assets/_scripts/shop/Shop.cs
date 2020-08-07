@@ -80,5 +80,5 @@ public class Shop : MonoBehaviour
         return items.Where(x => x.Stock != 0).ToList<ShopItem>();
     }
 
-    public event Action OnItemsChanged;
+    public event Action OnItemsChanged = null;
 }
