@@ -10,4 +10,5 @@ public class _playerAttributes : MonoBehaviour
     public int regenerationHP;
     public float shootCooldown;
 
+  
 }
