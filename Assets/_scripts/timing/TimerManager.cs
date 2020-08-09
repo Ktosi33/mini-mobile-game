@@ -34,14 +34,14 @@ public class TimerManager : MonoBehaviour
         {
         activeTimers.Add(t);
         }
-                Debug.Log("Aktywnych timerow: " + activeTimers.Count);
+                //Debug.Log("Aktywnych timerow: " + activeTimers.Count);
     }
 
     public void DisableTimer(Timer t) {
         if(!activeTimers.Remove(t)) {
             Debug.Log("Error removing timer");
         }
-                Debug.Log("Aktywnych timerow: " + activeTimers.Count);
+                //Debug.Log("Aktywnych timerow: " + activeTimers.Count);
     }
 
 

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class _playerBehavior : MonoBehaviour
 {
+    TimerManager timerManager;
+    Timer shootingCooldown;
     _playerAttributes playerAttributes;
     _playerMovement playerMovement;
     public GameObject player;
@@ -12,17 +14,23 @@ public class _playerBehavior : MonoBehaviour
     _cooldown cooldown;
     void Start()
     {
+        timerManager = GetComponent<TimerManager>();
         playerAttributes = GetComponent<_playerAttributes>();
         playerMovement = GetComponent<_playerMovement>();
         cooldown = new _cooldown();
+
+        shootingCooldown = timerManager.CreateTimer(playerAttributes.shootCooldown, false);
+        shootingCooldown.Run();
     }
 
   
     void Update()
     {
-      if(Input.GetButton("Fire1"))
+      if(Input.GetButton("Fire1") && shootingCooldown.Elapsed())
         {
             Shoot();
+            shootingCooldown.Reset();
+            shootingCooldown.Run();
         }
 
      

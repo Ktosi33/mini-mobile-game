@@ -96,6 +96,10 @@ public class Timer
         } 
     }
 
+    public bool Elapsed() {
+        return (counter <= 0) && (isRepeatable == false);
+    }
+
     public event Action OnElapsed;
 }
 
