@@ -38,7 +38,5 @@ public class _enemyMovement : MonoBehaviour
        (new Vector2(this.transform.position.x, this.transform.position.y))).normalized 
        * Time.fixedDeltaTime
        * enemyAttributes.runSpeed;
-     
-       
     }
 }

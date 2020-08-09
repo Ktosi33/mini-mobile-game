@@ -22,6 +22,8 @@ public class _grid : MonoBehaviour
         startPoint.x -= height;
         startPoint.z = 0;
         endPoint.z = 0;
+
+
          float startPointX = startPoint.x;
        while (startPoint.y<=endPoint.y + height)
         {
